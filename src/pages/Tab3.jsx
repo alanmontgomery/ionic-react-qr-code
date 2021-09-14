@@ -1,34 +1,17 @@
 import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab3.css';
-
-import QrReader from "react-qr-scanner";
 import { useState } from 'react';
+
+import { BarcodeScanner } from "@ionic-native/barcode-scanner";
 
 const Tab3 = () => {
 
   const [ QRData, setQRData ] = useState(false);
-  const [ scanning, setScanning ] = useState(false);
-  const previewStyle = {
-    
-    height: 240,
-    width: 320,
-  }
 
-  const start = () => {
+  const start = async () => {
 
-    setScanning(true);
-  }
-
-  const handleScan = data => {
-
+    const data = await BarcodeScanner.scan();
     setQRData(data);
-    setScanning(false);
-  }
-
-  const handleError = err => {
-
-    console.log(err);
-    setScanning(false);
   }
 
   return (
@@ -52,17 +35,6 @@ const Tab3 = () => {
           <IonRow>
             <IonCol size="12">
               <IonButton expand="block" onClick={ start }>Scan &rarr;</IonButton>
-            </IonCol>
-          </IonRow>
-
-          <IonRow>
-            <IonCol size="12">
-            <QrReader
-            delay={ 100 }
-            style={ previewStyle }
-            onError={ handleError }
-            onScan={ handleScan }
-          />
             </IonCol>
           </IonRow>
         </IonGrid>
