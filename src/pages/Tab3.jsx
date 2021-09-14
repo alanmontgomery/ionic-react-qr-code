@@ -54,16 +54,18 @@ const Tab3 = () => {
               <IonButton expand="block" onClick={ start }>Scan &rarr;</IonButton>
             </IonCol>
           </IonRow>
-        </IonGrid>
 
-       { scanning && 
-          <QrReader
+          <IonRow>
+            <IonCol size="12">
+            <QrReader
             delay={ 100 }
             style={ previewStyle }
             onError={ handleError }
             onScan={ handleScan }
           />
-        }
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );
