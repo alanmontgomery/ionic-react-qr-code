@@ -1,0 +1,7 @@
+{
+  "name": "ionic-react-qr-code",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
