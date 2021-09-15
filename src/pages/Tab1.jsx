@@ -20,7 +20,7 @@ const Tab1 = () => {
   const pageRef = useRef();
   const codes = useStoreState(QRStore, getCodes);
   const [ play ] = useSound(openSound);
-  const isWeb = isPlatform("mobileweb" || "web");
+  const isWeb = isPlatform("mobileweb" || "web" || "desktop");
 
   const [ QRData, setQRData ] = useState(false);
 
