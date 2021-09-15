@@ -41,7 +41,7 @@ const Tab1 = () => {
   const start = async () => {
 
     const platforms = getPlatforms();
-    const isWeb = platforms.includes("desktop" || "mobileweb");
+    const isWeb = (platforms.includes("desktop") || platforms.includes("mobileweb") || platforms.includes("pwa"));
 
     if (!isWeb) {
       
