@@ -20,7 +20,7 @@ const Tab1 = () => {
   const pageRef = useRef();
   const codes = useStoreState(QRStore, getCodes);
   const [ play ] = useSound(openSound);
-  const isNative = isPlatform("ios" || "android");
+  const isWeb = isPlatform("mobileweb");
 
   const [ QRData, setQRData ] = useState(false);
 
@@ -41,7 +41,7 @@ const Tab1 = () => {
 
   const start = async () => {
 
-    if (isNative) {
+    if (!isWeb) {
       
       const data = await BarcodeScanner.scan();
 
