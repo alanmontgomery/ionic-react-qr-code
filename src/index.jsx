@@ -12,7 +12,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-StatusBar.setStyle({ style: Style.Dark });
+// StatusBar.setStyle({ style: Style.Dark });
 
 // Call the element loader after the app has been rendered the first time
 defineCustomElements(window);

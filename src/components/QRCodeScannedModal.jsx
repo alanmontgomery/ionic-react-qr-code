@@ -28,7 +28,7 @@ export const QRCodeScannedModal = ({ dismiss, code, set, scan }) => {
 
   const handleAdd = async () => {
 
-    addQRCode(code.text, true);
+    addQRCode((code.text ? code.text : code), true);
     showToast({
 
       header: "Success!",
@@ -56,7 +56,7 @@ export const QRCodeScannedModal = ({ dismiss, code, set, scan }) => {
         <IonGrid className="ion-padding-top ion-margin-top">
           <IonRow className="ion-justify-content-center ion-text-center animate__animated animate__lightSpeedInLeft animate__faster">
             <IonCol size="12">
-              <QRCode value={ code.text } />
+              <QRCode value={ code.text ? code.text : code } />
             </IonCol>
           </IonRow>
 
@@ -68,7 +68,7 @@ export const QRCodeScannedModal = ({ dismiss, code, set, scan }) => {
                   <IonNote>This is what the code represents</IonNote>
                 </IonCardHeader>
                 <IonCardContent>
-                  <p>{ code.text }</p>
+                  <p>{ code.text ? code.text : code }</p>
                 </IonCardContent>
               </IonCard>
             </IonCol>

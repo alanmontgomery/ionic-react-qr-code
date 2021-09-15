@@ -1,5 +1,5 @@
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { IonContent, IonGrid, IonHeader, IonPage, IonTitle, IonToolbar, useIonModal } from '@ionic/react';
+import { IonContent, IonGrid, IonHeader, IonPage, IonTitle, IonToolbar, useIonModal, isPlatform } from '@ionic/react';
 import { useStoreState } from 'pullstate';
 import { useState } from 'react';
 import { useRef } from 'react';
@@ -13,19 +13,52 @@ import { getCodes } from '../store/Selectors';
 import './Tab1.css';
 
 import openSound from "../sounds/open.wav";
+import { QRWebModal } from '../components/QRWebModal';
 
 const Tab1 = () => {
 
   const pageRef = useRef();
   const codes = useStoreState(QRStore, getCodes);
   const [ play ] = useSound(openSound);
+  const isNative = isPlatform("ios" || "android");
 
   const [ QRData, setQRData ] = useState(false);
 
+  const handleScan = data => {
+    
+    if (data) {
+
+      setQRData(data);
+      play();
+      handleSuccess(data);
+    }
+  }
+  
+  const handleError = err => {
+    
+    console.error(err)
+  }
+
   const start = async () => {
 
-    const data = await BarcodeScanner.scan();
+    if (isNative) {
+      
+      const data = await BarcodeScanner.scan();
+      handleSuccess(data);
+    } else {
+
+      presentWebModal({
+
+        presentingElement: pageRef.current
+      });
+    }
+  }
+
+  const handleSuccess = data => {
+
     setQRData(data);
+    console.log(data);
+    dismissWebModal();
     
     play();
     present({
@@ -40,6 +73,14 @@ const Tab1 = () => {
     code: QRData,
     set: () => setQRData(),
     scan: () => start()
+  });
+
+  const [ presentWebModal, dismissWebModal ] = useIonModal(QRWebModal, {
+
+    dismiss: () => dismissWebModal(),
+    set: () => setQRData(),
+    scan: handleScan,
+    error: handleError
   });
 
   return (
