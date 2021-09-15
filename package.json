@@ -10,6 +10,7 @@
     "@capacitor/keyboard": "1.0.3",
     "@capacitor/status-bar": "1.0.3",
     "@ionic-native/barcode-scanner": "^5.36.0",
+    "@ionic/pwa-elements": "^3.0.2",
     "@ionic/react": "^6.0.0-beta.5",
     "@ionic/react-router": "^6.0.0-beta.5",
     "@testing-library/jest-dom": "^5.11.9",
