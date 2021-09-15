@@ -1,5 +1,5 @@
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { IonContent, IonGrid, IonHeader, IonPage, IonTitle, IonToolbar, useIonModal, isPlatform } from '@ionic/react';
+import { IonContent, IonGrid, IonHeader, IonPage, IonTitle, IonToolbar, useIonModal, isPlatform, getPlatforms } from '@ionic/react';
 import { useStoreState } from 'pullstate';
 import { useState } from 'react';
 import { useRef } from 'react';
@@ -40,6 +40,8 @@ const Tab1 = () => {
   }
 
   const start = async () => {
+
+    console.log(getPlatforms());
 
     if (!isWeb) {
       
