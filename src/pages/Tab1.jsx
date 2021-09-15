@@ -44,7 +44,10 @@ const Tab1 = () => {
     if (isNative) {
       
       const data = await BarcodeScanner.scan();
-      handleSuccess(data);
+
+      if (data) {
+        handleSuccess(data);
+      }
     } else {
 
       presentWebModal({
