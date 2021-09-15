@@ -3,7 +3,7 @@ An example of a QR code scanner and generator in Ionic and React
 <br />
 If you'd like to support, you can <a className="link" href="https://www.buymeacoffee.com/ionicreacthub" target="_blank" rel="noopener">buy me a coffee</a> ☕️
 
-![Ionic React QR](https://repository-images.githubusercontent.com/404475440/b52ba520-2c45-4a95-9116-04d17793e560)
+![Ionic React QR](https://repository-images.githubusercontent.com/406475252/15a5c23c-1dd8-4ddb-aa72-2c395e558fd7)
 
 ### Included in this Ionic React Template/UI
 * Animations (Ionic & custom)
